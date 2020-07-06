@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :following, :followers]
 
   def show
+    @tweets = @user.tweets
   end
 
   def following

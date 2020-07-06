@@ -1,2 +1,30 @@
 
 <h1>Tweet User Page</h1>
+
+Full Name: <%= @user.full_name %> </br>
+Username: <%= @user.username %> </br>
+Email: <%= @user.email %>
+</br>
+</br>
+</br>
+
+<%= link_to("Following(<Number>)", "#") %></br>
+<%= link_to("Followers(<Number>)", "#") %>
+
+
+<h3>Tweets</h3>
+<% if @tweets.empty? %>
+  <h4>There are no tweets yet</h4>
+<% else %>
+  <ul>
+    <% @tweets.each do |tweet| %>
+      <li>
+        <p>
+          <%= tweet.user.full_name %>, <%= tweet.user.username %> - <%= tweet.body %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<!-- ToDo: Decorator and n+1 query improvement -->
