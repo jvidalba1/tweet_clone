@@ -20,10 +20,13 @@ Email: <%= @user.email %>
 </br>
 
 <%= link_to("Following(#{@user.follow_count})", following_user_path(@user.username)) %></br>
-<%= link_to("Followers(#{@user.followers_count})", followers_user_path(@user.username)) %>
-
+<%= link_to("Followers(#{@user.followers_count})", followers_user_path(@user.username)) %></br>
 
 <h3>Tweets</h3>
+
+<%= will_paginate @tweets %>
+
+
 <% if @tweets.empty? %>
   <h4>There are no tweets yet</h4>
 <% else %>
@@ -37,5 +40,6 @@ Email: <%= @user.email %>
     <% end %>
   </ul>
 <% end %>
+
 
 <!-- ToDo: Decorator and n+1 query improvement, partial for listing tweets -->

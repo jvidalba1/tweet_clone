@@ -5,6 +5,8 @@
 
   <h3>Tweets</h3>
 
+  <%= will_paginate @tweets %>
+
   <% if @tweets.empty? %>
     <h4>There are no tweets yet</h4>
   <% else %>

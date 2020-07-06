@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :following, :followers, :follow, :unfollow, :finder, :follow_finder]
 
   def show
-    @tweets = @user.tweets
+    @tweets = @user.tweets.order(created_at: :desc).paginate(page: params[:page])
   end
 
   def finder

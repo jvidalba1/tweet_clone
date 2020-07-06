@@ -9,7 +9,7 @@
     <% @followers.each do |user| %>
       <li>
         <p>
-          <%= user.full_name %>, @<%= user.username %>
+          <%= user.full_name %>, <%= link_to("@#{user.username}", user_path(user.username)) %>
           <% unless current_user == user %>
             -
             <% if current_user.following?(user) %>
