@@ -1,6 +1,18 @@
 
 <h1>Tweet User Page</h1>
 
+<% unless current_user == @user %>
+  <% if current_user.following?(@user) %>
+    Following <%= link_to("Unfollow", "#") %>
+  <% else %>
+    <%= link_to("Follow", "#") %>
+  <% end %>
+<% end %>
+
+</br>
+</br>
+</br>
+
 Full Name: <%= @user.full_name %> </br>
 Username: <%= @user.username %> </br>
 Email: <%= @user.email %>
@@ -8,8 +20,8 @@ Email: <%= @user.email %>
 </br>
 </br>
 
-<%= link_to("Following(<Number>)", "#") %></br>
-<%= link_to("Followers(<Number>)", "#") %>
+<%= link_to("Following(#{@user.follow_count})", "#") %></br>
+<%= link_to("Followers(#{@user.followers_count})", "#") %>
 
 
 <h3>Tweets</h3>
