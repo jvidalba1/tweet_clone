@@ -14,13 +14,14 @@
       <% @tweets.each do |tweet| %>
         <li>
           <p>
-            <b><%= tweet.user.full_name %></b>, @<%= tweet.user.username %> - <%= tweet.body %>
+            <b><%= tweet.user.full_name %></b>, <%= link_to("@#{tweet.user.username}", user_path(tweet.user.username)) %> - <%= tweet.body %>
           </p>
         </li>
       <% end %>
     </ul>
   <% end %>
 <% else %>
-  <h1>Inicia sesion</h1>
+  <h1>Please log in </h1>
 <% end %>
-<!-- ToDo: Show my tweets + tweets from people that Im following -->
+
+

@@ -2,6 +2,8 @@
 
 <h2>Followers</h2>
 
+<%= will_paginate @followers %>
+
 <% if @followers.empty? %>
   <h4>Nothing yet</h4>
 <% else %>
