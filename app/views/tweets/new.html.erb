@@ -1,0 +1,16 @@
+<h2>Create tweet</h2>
+
+
+  <%# byebug%>
+
+<%= form_for(@tweet, as: :tweet, url: user_tweets_path()) do |f| %>
+
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Post" %>
+  </div>
+<% end %>

@@ -1,1 +1,16 @@
-<h1>Home</h1>
+<h1>Feed page</h1>
+
+<% if current_user %>
+  <%= link_to("Tweet", new_user_tweet_path(user_username: current_user.username)) %>
+
+  <h3>Tweets</h3>
+
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+<% else %>
+  <h1>Inicia sesion</h1>
+<% end %>

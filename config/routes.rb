@@ -7,5 +7,7 @@ Rails.application.routes.draw do
       get 'following'
       get 'followers'
     end
+
+    resources :tweets, only: [:new, :create]
   end
 end
