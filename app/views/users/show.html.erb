@@ -3,9 +3,9 @@
 
 <% unless current_user == @user %>
   <% if current_user.following?(@user) %>
-    Following <%= link_to("Unfollow", "#") %>
+    Following <%= link_to("Unfollow", unfollow_user_path(@user.username), method: :post) %>
   <% else %>
-    <%= link_to("Follow", "#") %>
+    <%= link_to("Follow", follow_user_path(@user.username), method: :post) %>
   <% end %>
 <% end %>
 

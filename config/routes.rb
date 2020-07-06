@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     member do
       get 'following'
       get 'followers'
+      post 'follow'
+      post 'unfollow'
     end
 
     resources :tweets, only: [:new, :create]
