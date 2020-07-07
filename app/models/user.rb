@@ -9,4 +9,7 @@ class User < ApplicationRecord
 
   acts_as_followable
   acts_as_follower
+
+  validates :username, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
 end

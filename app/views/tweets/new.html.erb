@@ -1,9 +1,13 @@
 <h2>Create tweet</h2>
 
-
-  <%# byebug%>
-
 <%= form_for(@tweet, as: :tweet, url: user_tweets_path()) do |f| %>
+  <% if @tweet.errors.any? %>
+    <ul>
+      <% @tweet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
   <div class="field">
     <%= f.label :body %><br />
