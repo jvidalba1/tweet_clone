@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_authorization, only: [:finder, :follow_finder]
   before_action :set_user, only: [:show, :following, :followers, :follow, :unfollow, :finder, :follow_finder]
+  before_action :check_authorization, only: [:finder, :follow_finder]
 
   def show
     @tweets = @user.tweets.order(created_at: :desc).paginate(page: params[:page])
@@ -11,21 +11,13 @@ class UsersController < ApplicationController
   end
 
   def follow_finder
-    @finder_user = User.find_by_username(finder_params[:username])
+    result = Finder.new(finder_params, @user).call
 
-    if @finder_user
-
-      if @user.following?(@finder_user)
-        flash[:alert] = "You're already following this user."
-        render :finder
-      else
-        @user.follow(@finder_user)
-
-        flash[:notice] = "#{@finder_user.username} followed"
-        redirect_to user_path(@finder_user.username)
-      end
+    if result.success?
+      flash[:notice] = "You're following #{result.user.username} now."
+      redirect_to user_path(result.user.username)
     else
-      flash[:alert] = "User not found"
+      flash[:alert] = result.error
       render :finder
     end
   end

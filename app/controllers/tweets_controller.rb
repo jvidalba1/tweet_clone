@@ -9,6 +9,7 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = @user.tweets.new(tweet_params)
+    authorize @tweet
 
     if @tweet.save
       flash[:notice] = "Tweet created successfully."
