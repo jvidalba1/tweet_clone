@@ -6,27 +6,4 @@
 
 <h2>Following</h2>
 
-<%= will_paginate @following %>
-
-<% if @following.empty? %>
-  <h4>Nothing yet</h4>
-<% else %>
-  <ul>
-    <% @following.each do |user| %>
-      <li>
-        <p>
-          <%= user.full_name %> (<%= link_to("@#{user.username}", user_path(user.username)) %>)
-          <% unless current_user == user %>
-            [
-            <% if current_user.following?(user) %>
-              <%= link_to("Unfollow", unfollow_user_path(user.username), method: :post) %>
-            <% else %>
-              <%= link_to("Follow", follow_user_path(user.username), method: :post) %>
-            <% end %>
-            ]
-          <% end %>
-        </p>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render partial: "users_list", locals: { users: @following } %>

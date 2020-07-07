@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :check_authorization, only: [:finder, :follow_finder]
 
   def show
-    @tweets = @user.tweets.order(created_at: :desc).paginate(page: params[:page])
+    @tweets = @user.tweets.includes(:user).order(created_at: :desc).paginate(page: params[:page])
   end
 
   def finder

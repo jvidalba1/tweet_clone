@@ -1,15 +1,7 @@
 <h1><%= @user.full_name %></h1>
 
-<% unless current_user == @user %>
-  <% if current_user.following?(@user) %>
-    Following <%= link_to("Unfollow", unfollow_user_path(@user.username), method: :post) %>
-  <% else %>
-    <%= link_to("Follow", follow_user_path(@user.username), method: :post) %>
-  <% end %>
-<% end %>
+<%= render partial: "follow_button", locals: { user: @user } %>
 
-</br>
-</br>
 </br>
 
 Username: <%= @user.username %> </br>
@@ -21,23 +13,4 @@ Email: <%= @user.email %>
 <%= link_to("Following(#{@user.follow_count})", following_user_path(@user.username)) %></br>
 <%= link_to("Followers(#{@user.followers_count})", followers_user_path(@user.username)) %></br>
 
-<h3>Tweets</h3>
-
-<%= will_paginate @tweets %>
-
-<% if @tweets.empty? %>
-  <h4>There are no tweets yet</h4>
-<% else %>
-  <ul>
-    <% @tweets.each do |tweet| %>
-      <li>
-        <p>
-          <%= tweet.user.full_name %>, <%= tweet.user.username %> - <%= tweet.body %>
-        </p>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
-
-
-<!-- ToDo: Decorator and n+1 query improvement, partial for listing tweets -->
+<%= render partial: "tweets/tweets", locals: { tweets: @tweets } %>

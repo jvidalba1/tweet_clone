@@ -6,7 +6,7 @@
   <ul>
     <% tweets.each do |tweet| %>
       <li>
-        <%= render partial: "tweet", locals: { tweet: tweet } %>
+        <%= render partial: "tweets/tweet", locals: { tweet: tweet } %>
       </li>
     <% end %>
   </ul>
