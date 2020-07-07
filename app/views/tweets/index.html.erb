@@ -1,0 +1,9 @@
+<h1>Feed page</h1>
+
+<% if user_signed_in? %>
+  <%= link_to("Tweet", new_user_tweet_path(user_username: current_user.username)) %>
+
+  <%= render partial: "tweets", locals: { tweets: @tweets } %>
+<% else %>
+  <h1>Please log in </h1>
+<% end %>

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
-  get "feed", to: "pages#feed"
 
   resources :users, param: :username do
     member do
@@ -13,6 +12,6 @@ Rails.application.routes.draw do
       post 'unfollow'
     end
 
-    resources :tweets, only: [:new, :create]
+    resources :tweets, only: [:new, :create, :index]
   end
 end

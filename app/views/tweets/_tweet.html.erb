@@ -1,0 +1,3 @@
+<p>
+  <b><%= tweet.user.full_name %></b>, <%= link_to("@#{tweet.user.username}", user_path(tweet.user.username)) %> - <%= tweet.body %>
+</p>

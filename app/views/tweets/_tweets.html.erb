@@ -1,0 +1,15 @@
+<h3>Tweets</h3>
+
+<% if tweets.empty? %>
+  <h4>There are no tweets yet</h4>
+<% else %>
+  <ul>
+    <% tweets.each do |tweet| %>
+      <li>
+        <%= render partial: "tweet", locals: { tweet: tweet } %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= will_paginate tweets %>
+<% end %>

@@ -13,11 +13,15 @@ class TweetsController < ApplicationController
 
     if @tweet.save
       flash[:notice] = "Tweet created successfully."
-      redirect_to feed_path
+      redirect_to user_tweets_path(@user.username)
     else
       flash[:alert] = "Error posting tweet."
       render :new
     end
+  end
+
+  def index
+    @tweets = TweetsQuery.new(current_user).all.paginate(page: params[:page])
   end
 
   private
