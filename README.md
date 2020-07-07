@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Steps for running the application
 
-Things you may want to cover:
+1. Clone the repo > git clone https://github.com/jvidalba1/tweet_clone.git
 
-* Ruby version
+2. Run `bundle install` over the project directory
 
-* System dependencies
+3. Setup and run migrations
 
-* Configuration
+`rails db:setup`
 
-* Database creation
+`rails db:migrate`
 
-* Database initialization
+4. Run the application with `rails server` command over the project directory
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
