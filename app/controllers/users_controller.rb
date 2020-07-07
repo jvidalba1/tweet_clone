@@ -52,6 +52,7 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find_by_username(params[:username])
+      raise ActiveRecord::RecordNotFound unless @user
     end
 
     def finder_params

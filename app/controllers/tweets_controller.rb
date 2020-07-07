@@ -24,6 +24,7 @@ class TweetsController < ApplicationController
 
     def set_user
       @user = User.find_by_username(params[:user_username])
+      raise ActiveRecord::RecordNotFound unless @user
     end
 
     def tweet_params

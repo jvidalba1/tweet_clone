@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   rescue_from Pundit::NotAuthorizedError, :with => :not_authorize
+  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
   include Pundit
 
@@ -10,6 +11,11 @@ class ApplicationController < ActionController::Base
 
     def not_authorize
       flash[:alert] = "You cannot do this action"
+      redirect_to "/"
+    end
+
+    def record_not_found
+      flash[:alert] = "Record not found"
       redirect_to "/"
     end
 
