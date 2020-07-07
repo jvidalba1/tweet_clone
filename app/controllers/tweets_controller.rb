@@ -1,8 +1,10 @@
 class TweetsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user, only: [:new, :create]
 
   def new
     @tweet = @user.tweets.new
+    authorize @tweet
   end
 
   def create
@@ -10,7 +12,7 @@ class TweetsController < ApplicationController
 
     if @tweet.save
       flash[:notice] = "Tweet created successfully."
-      redirect_to root_path
+      redirect_to feed_path
     else
       flash[:alert] = "Error posting tweet."
       render :new

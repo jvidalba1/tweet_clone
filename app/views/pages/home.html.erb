@@ -1,27 +1,2 @@
-<h1>Feed page</h1>
-
-<% if current_user %>
-  <%= link_to("Tweet", new_user_tweet_path(user_username: current_user.username)) %>
-
-  <h3>Tweets</h3>
-
-  <%= will_paginate @tweets %>
-
-  <% if @tweets.empty? %>
-    <h4>There are no tweets yet</h4>
-  <% else %>
-    <ul>
-      <% @tweets.each do |tweet| %>
-        <li>
-          <p>
-            <b><%= tweet.user.full_name %></b>, <%= link_to("@#{tweet.user.username}", user_path(tweet.user.username)) %> - <%= tweet.body %>
-          </p>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
-<% else %>
-  <h1>Please log in </h1>
-<% end %>
-
+<h1>Home page</h1>
 

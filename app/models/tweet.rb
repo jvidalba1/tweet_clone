@@ -5,5 +5,5 @@ class Tweet < ApplicationRecord
 
   validates :user, presence: true
 
-  validates :body, presence: true, length: { is: 280 }
+  validates :body, presence: true, length: { maximum: 280 }
 end
